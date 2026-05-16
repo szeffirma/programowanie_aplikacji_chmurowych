@@ -44,7 +44,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     permissions:
-      id-token: write
       contents: read
 
     steps:
@@ -53,16 +52,10 @@ jobs:
         with:
           name: node-app
 
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_C4E0DE84BD24465B802DDBF97EB79898 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_BBF4DD4E6AAC4213956A53880C0C7D9A }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_BE90A7B8ABE649E6B4D9D0A4A0ACF24A }}
-
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'zuczki-nowe'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
           startup-command: 'node index.js'
