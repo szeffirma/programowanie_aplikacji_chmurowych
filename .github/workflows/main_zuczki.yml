@@ -20,6 +20,9 @@ jobs:
         with:
           node-version: '22.x'
 
+      - name: Install server production dependencies
+        run: npm install --production
+
       - name: Install and build React
         run: |
           cd client
@@ -38,6 +41,7 @@ jobs:
             index.js
             package.json
             package-lock.json
+            node_modules/
             client-build/
 
   deploy:
