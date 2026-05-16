@@ -1,0 +1,25 @@
+{
+  "name": "programowanie_aplikacji_chmurowych",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/szeffirma/programowanie_aplikacji_chmurowych.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/szeffirma/programowanie_aplikacji_chmurowych/issues"
+  },
+  "homepage": "https://github.com/szeffirma/programowanie_aplikacji_chmurowych#readme",
+  "dependencies": {
+    "expres": "^0.0.5",
+    "express": "^5.2.1"
+  }
+}
