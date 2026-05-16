@@ -27,23 +27,19 @@ jobs:
           npm run build
           cd ..
 
-      - name: Install Node dependencies
-        run: npm install --production
-
-      - name: Create deployment package
-        run: |
-          mkdir deploy
-          cp index.js deploy/
-          cp package.json deploy/
-          cp web.config deploy/
-          cp -r node_modules deploy/
-          cp -r client/build deploy/client-build
+      - name: Copy React build
+        run: cp -r client/build ./client-build
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: deploy/
+          path: |
+            index.js
+            package.json
+            package-lock.json
+            web.config
+            client-build/
 
   deploy:
     runs-on: ubuntu-latest
