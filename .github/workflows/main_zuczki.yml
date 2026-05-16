@@ -35,6 +35,11 @@ jobs:
         with:
           name: node-app
           path: .
+          exclude: |
+            node_modules/
+            client/node_modules/
+            backend/
+            **/*.db
 
   deploy:
     runs-on: ubuntu-latest
