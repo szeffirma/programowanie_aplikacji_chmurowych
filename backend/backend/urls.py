@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('your_app.urls')), # Twoje API
+    path('api/', include('liga.urls')), # Twoje API
     
     re_path(r'^.*$', TemplateView.as_view(template_name='index.html')),
 ]
