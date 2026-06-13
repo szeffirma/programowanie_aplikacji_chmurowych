@@ -25,13 +25,7 @@ SECRET_KEY = 'django-insecure-r+p2kalv!@x#4q9a(x5bv&4^bzpn3m1pcc^=vv@2tf%0$135tt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'zuczki-ostatnie-ayfma2fuhzc5asbs.polandcentral-01.azurewebsites.net',
-    'zuczki-ostatnie.azurewebsites.net',
-    'localhost',
-    '127.0.0.1',
-    '.azurewebsites.net'
-]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -65,7 +59,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'static_react')], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,10 +117,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -144,7 +134,7 @@ import os
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '..', 'frontend', 'build', 'static'),
+    os.path.join(BASE_DIR, 'static_react', 'static'),
 ]
 
 REACT_BUILD_DIR = os.path.join(BASE_DIR, 'static_react')
