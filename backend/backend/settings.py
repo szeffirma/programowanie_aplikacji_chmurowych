@@ -25,7 +25,13 @@ SECRET_KEY = 'django-insecure-r+p2kalv!@x#4q9a(x5bv&4^bzpn3m1pcc^=vv@2tf%0$135tt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['zuczki-ostatnie.azurewebsites.net', 'localhost', '127.0.0.1','zuczki-ostatnie-ayfma2fuhzc5asbs.polandcentral-01.azurewebsites.net']
+ALLOWED_HOSTS = [
+    'zuczki-ostatnie-ayfma2fuhzc5asbs.polandcentral-01.azurewebsites.net',
+    'zuczki-ostatnie.azurewebsites.net',
+    'localhost',
+    '127.0.0.1',
+    '.azurewebsites.net'
+]
 
 
 # Application definition
