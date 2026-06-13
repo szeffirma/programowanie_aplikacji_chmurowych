@@ -16,25 +16,50 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.13'
-      - name: Install Django dependencies
+
+      - name: Install dependencies
         run: |
+          cd backend
           pip install -r requirements.txt
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+
       - name: Install & Build React
         run: |
           cd client
           npm install
           npm run build
 
-      - name: Copy React build to Backend
-        run: cp -r client/build backend/static_react  
+      - name: Copy React to Backend
+        run: |
+          mkdir -p backend/static_react
+          cp -r client/build/* backend/static_react/
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
         with:
           name: python-app
           path: backend/
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+    
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: python-app
+          path: .
+
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'zuczki-ostatnie'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: .
